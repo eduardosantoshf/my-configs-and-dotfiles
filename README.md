@@ -1,1 +1,1 @@
-# my-dotfiles-and-configs
+# my-configs-and-dotfiles
