@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/eduardosantos/.oh-my-zsh"
 
@@ -96,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh>
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
@@ -105,8 +107,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias python=/usr/local/bin/python3.7
+alias python3=/usr/bin/python3
 
-source ~/.bash_profile;
+export PATH=/usr/local/bin:$PATH
+
+#source ~/.bash_profile;
 
 ZSH_THEME="spaceship"
 
@@ -119,12 +124,13 @@ SPACESHIP_DIR_TRUNC_PREFIX="../"
 SPACESHIP_USER_SHOW=always
 SPACESHIP_HOST_SHOW=always
 SPACESHIP_BATTERY_SHOW=always
-SPACESHIP_TIME_SHOW=false
+SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_FORMAT=%T
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_VENV_PREFIX="("
 SPACESHIP_VENV_SUFFIX=") "
 SPACESHIP_EXEC_TIME_ELAPSED=1
+SPACESHIP_JOBS_SHOW=true
 
 alias cassandra='export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_201` && cassandra -f'
 
