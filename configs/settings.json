@@ -1,0 +1,22 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.startupEditor": "none",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#3d2d3d"
+        },
+        {
+            "column": 120,
+            "color": "#422323"
+        }
+    ],
+    "todo-tree.general.showActivityBarBadge": true,
+    "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+    "todo-tree.highlights.enabled": false,
+    "[python]": {
+        "editor.formatOnType": true
+    }
+}
