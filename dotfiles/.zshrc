@@ -1,17 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
-
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/eduardosantos/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -26,17 +23,16 @@ export ZSH="/Users/eduardosantos/.oh-my-zsh"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -48,12 +44,10 @@ export ZSH="/Users/eduardosantos/.oh-my-zsh"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
-
-# Code to remove the underlined directories when typing "cd"
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -76,7 +70,7 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,32 +92,27 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh>
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias python=/usr/local/bin/python3.7
-alias python3=/usr/bin/python3
+# alias ohmyzsh="mate ~/.oh-my-zsh
 
-export PATH=/usr/local/bin:$PATH
+alias rm='trash'
+alias cl='clear'
 
-#source ~/.bash_profile;
+#plugins=( 
+#     zsh-autosuggestions
+#)
 
-ZSH_THEME="spaceship"
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 SPACESHIP_DIR_TRUNC=2
 SPACESHIP_DIR_TRUNC_PREFIX="../"
 SPACESHIP_USER_SHOW=always
 SPACESHIP_HOST_SHOW=always
-SPACESHIP_BATTERY_SHOW=always
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_FORMAT=%T
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -131,9 +120,24 @@ SPACESHIP_VENV_PREFIX="("
 SPACESHIP_VENV_SUFFIX=") "
 SPACESHIP_EXEC_TIME_ELAPSED=1
 SPACESHIP_JOBS_SHOW=true
+SPACESHIP_BATTERY_SHOW=false
 
-alias cassandra='export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_201` && cassandra -f'
+# Remove the underlined directories when typing "cd"
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
-alias rm='trash'
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-export PATH=$PATH:/Users/eduardosantos/opt/WebDriver/bin
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi

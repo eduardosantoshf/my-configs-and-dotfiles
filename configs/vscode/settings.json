@@ -1,5 +1,4 @@
 {
-    "window.zoomLevel": 1,
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "workbench.startupEditor": "none",
     "security.workspace.trust.untrustedFiles": "open",
@@ -18,5 +17,24 @@
     "todo-tree.highlights.enabled": false,
     "[python]": {
         "editor.formatOnType": true
-    }
+    },
+    "git.ignoreLegacyWarning": true,
+    "fileheader.Author": "Eduardo Santos",
+    "fileheader.author": "Eduardo Santos",
+    "fileheader.custom_template_path": "template/header/Python.tmpl",
+    "fileheader.other_config": {
+
+
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "fileheader.ignore": [
+        "5gasp-website",
+        ".tmpl",
+        "*.m"
+    ],
+    "fileheader.file_suffix_mapping": {
+
+
+    },
+    "window.zoomLevel": 1
 }
