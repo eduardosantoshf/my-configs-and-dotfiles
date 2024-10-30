@@ -126,6 +126,7 @@ SPACESHIP_BATTERY_SHOW=false
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 eval "$(pyenv init -)"
