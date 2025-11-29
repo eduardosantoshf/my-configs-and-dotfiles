@@ -119,9 +119,18 @@ SPACESHIP_EXEC_TIME_PRECISION=3
 SPACESHIP_JOBS_SHOW=true
 SPACESHIP_BATTERY_SHOW=false
 
-# Activate pyenv-virtualenv
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#####################
+#      Aliases      #
+#####################
 
-alias cdd='cd ~/Downloads'
+###### Docker ######
+
+alias dc='docker compose'
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dim='docker image'
+alias dvol='docker volume'
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dcl='docker compose logs'
+alias dclf='docker compose logs -f'
