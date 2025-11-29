@@ -132,5 +132,7 @@ alias dim='docker image'
 alias dvol='docker volume'
 alias dps="docker ps"
 alias dpsa="docker ps -a"
+alias dl='docker logs'
+alias dlf='docker logs -f'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
